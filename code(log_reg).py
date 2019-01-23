@@ -37,16 +37,10 @@ def initialize_with_zeros(dim):
 def propagate(w,x,y,b):
     m = x.shape[0]
     z = np.dot(w.T,x) + b
-    #print(b.shape)
-    #print(w.T.shape)
-    #print(x.shape)
-    #print(z.shape)
     a = sigmoid(z)
-    #print(a.shape)
     J = -np.sum(y * np.log(a) + ((1-y) * np.log(1-a)))/m
     db = np.sum(a-y)/m
     dw = np.dot(x,(a-y).T)/m
-    # print(dw.shape)
     assert(dw.shape == w.shape)
     assert(db.dtype == float)
     cost = np.squeeze(J)
